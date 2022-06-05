@@ -12,7 +12,10 @@ function App() {
 
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
+  const [FilterTodos, setFilterTodos] = useState([]);
   const [editId, setEditId] = useState(0);
+
+
 
   const bounce = cssTransition({
     enter: "animate__animated animate__bounceIn",
@@ -70,6 +73,14 @@ function App() {
     setTodo(updateTodo.todo)
   }
 
+  // const handleFilter = (e) => {
+  //   setFilterTodos(e.target.value);
+  //   const filterTodo = todos.filter((data) => data.id !== todo.id)
+  //   setTodos(filterTodo)
+  //   console.log(FilterTodos);
+
+  // }
+
   return (
     <>
       <ToastContainer />
@@ -80,10 +91,20 @@ function App() {
             <input type="text"
               onChange={(e) => setTodo(e.target.value)}
               value={todo}
+              placeholder='add task..'
             />
             <button type='submit'>{editId ? 'Edit' : 'Add'}</button>
+            {/* <input type="text"
+              placeholder='filter task..'
+              onChange={handleFilter}
+            /> */}
           </form>
-          <ToDoList todos={todos} handleUpdate={handleUpdate} handleDelete={handleDelete} />
+
+          <ToDoList
+            todos={todos}
+            handleUpdate={handleUpdate}
+            handleDelete={handleDelete}
+          />
         </div>
       </div>
     </>
